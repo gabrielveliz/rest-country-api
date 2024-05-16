@@ -1,0 +1,14 @@
+.containerCountry{
+    padding: 5rem 10rem;
+}
+.countryHead
+{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+.countryList{
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 2rem;
+}
