@@ -1,0 +1,6 @@
+body{
+    background-color: var(--fondo);
+}
+span,p,h1{
+    color: var(--texto);
+}

@@ -1,5 +1,7 @@
 import Home from "./views/Home"
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./styles/variables.css"
+import "./App.css"
 
 
 function App() {

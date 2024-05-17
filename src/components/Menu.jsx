@@ -1,3 +1,4 @@
+import "../styles/Menu.css"
 
 const Menu = ({theme}) => {
     return(

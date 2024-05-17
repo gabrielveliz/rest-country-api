@@ -1,3 +1,4 @@
+import "../styles/countryMin.css"
 
 const CountryMin = ({paises}) =>{
 
@@ -11,7 +12,7 @@ const CountryMin = ({paises}) =>{
                 <div className="countryList">
                 {
                     //si no es null mostramos la informacion
-                    paises && paises.slice(0,9).map((pais,index)=>
+                    paises && paises.slice(0,8).map((pais,index)=>
                         <div className="CountryCard" key={index}>
                             <img src={pais.flags.png} alt={pais.flags.alt} />
                             <span>{pais.name.common}</span>
