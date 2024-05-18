@@ -13,7 +13,7 @@ const CountryMin = ({paises}) =>{
                 <div className="countryList">
                 {
                     //si no es null mostramos la informacion
-                    paises && paises.slice(0,8).map((pais,index)=>
+                    paises && paises.slice(80,88).map((pais,index)=>
                         <Link to={`/country/${pais.name.common}`} key={index}>
                         <div className="CountryCard" >
                             <img src={pais.flags.png} alt={pais.flags.alt} />
