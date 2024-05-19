@@ -1,96 +1,72 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { useState, useEffect} from "react";
-import axios from "axios";
-const CountryPage = () =>{
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+
+const CountryPage = () => {
     const { countryName } = useParams();
-    const [pais,setPais] = useState(null);
+    const [pais, setPais] = useState(null);
+    const [borderCountries, setBorderCountries] = useState([]);
 
-        
-    useEffect(()=>{
-        const fetchCountries = async (countryName) => {
-            try {
-                const response = await axios.get('https://restcountries.com/v3.1/name/'+ countryName);
-                setPais(response.data[0]);
-                console.log(response.data[0]);
+    useEffect(() => {
+        const fetchCountry = async () => {
+        try {
+        const response = await axios.get(`https://restcountries.com/v3.1/name/${countryName}`);
+        const countryData = response.data[0];
+        setPais(countryData);
 
-                
-            } catch (error) {
-                console.error('Error:', error);
+        if (countryData.borders) {
+            const borderPromises = countryData.borders.map(async (border) => {
+            const borderResponse = await axios.get(`https://restcountries.com/v3.1/alpha/${border}`);
+            return borderResponse.data[0].name.common;
+            });
+
+            const borderNames = await Promise.all(borderPromises);
+            setBorderCountries(borderNames);
             }
-            };
-            
-            fetchCountries(countryName); 
-            //
-        }, [countryName]);  
-
-        if (!pais) {
-            return <div><p>Loading...</p></div>; 
+        } catch (error) {
+        console.error('Error:', error);
         }
+    };
 
-        let curr = Object.keys(pais.currencies)
-        let name = Object.keys(pais.name.nativeName)
-        let lang = Object.keys(pais.languages)
-        let border = Object.keys(pais.borders)
-        let languagues = "";
-        let borders = [];
-        let cont = 0
-        curr=pais.currencies[curr[0]].name
-        name=pais.name.nativeName[name[0]].official
+    fetchCountry();
+    }, [countryName]);
 
-        lang.forEach(element => { // generando un string con los idiomas
-            cont = cont + 1
-            if(cont<lang.length){
-                languagues = languagues + pais.languages[element]+ ", "; // coma cuando no ha terminado
-            }
-            else{
-                languagues = languagues + pais.languages[element]+ "."; // punto al final
-            }
-            
-        });
+    if (!pais) {
+    return <div><p>Loading Country...</p></div>;
+    }
 
-
-            border.forEach(element => {
-                borders.push(pais.borders[element]) // generando un arreglo para buscar los nombres de las fronteras
-            })
-            console.log(borders)
-        
+    const currencies = pais.currencies ? Object.values(pais.currencies).map(c => c.name).join(', ') : 'N/A';
+    const nativeName = pais.name.nativeName ? Object.values(pais.name.nativeName)[0].official : 'N/A';
+    const languages = pais.languages ? Object.values(pais.languages).join(', ') : 'N/A';
 
     return (
+    <div>
+        <div>
+            <img src={pais.flags.png} alt={pais.flags.alt} />
+        </div>
+        <div>
+            <div><p>{countryName}</p></div>
         <div>
             <div>
-                <img src={pais.flags.png} alt={pais.flags.alt} />
+            <p>Native Name: {nativeName}</p>
+            <p>Population: {pais.population}</p>
+            <p>Region: {pais.region}</p>
+            <p>Sub Region: {pais.subregion}</p>
+            <p>Capital: {pais.capital && pais.capital.join(', ')}</p>
             </div>
             <div>
-                <div><p>{countryName}</p></div>
-                <div>
-                    <div>
-                        <p>Native Name: {name}</p>
-                        <p>Population: {pais.population}</p>
-                        <p>Region: {pais.region}</p>
-                        <p>Sub Region: {pais.subregion}</p>
-                        <p>Capital: {pais.capital}</p>
-                    </div>
-                    <div>
-                        <p>Top Level Domain: {pais.tld}</p>
-                        <p>Currencies: {curr}</p>
-                        <p>Languages: {languagues}</p>
-                    </div>
-                </div>
-                <div>
-                    <p>Border Countries: 
-                        </p>
-                </div>
-                
-                
-
+            <p>Top Level Domain: {pais.tld}</p>
+            <p>Currencies: {currencies}</p>
+            <p>Languages: {languages}</p>
             </div>
-            
-            
-
-
         </div>
-        );
+        <div>
+            <p>Border Countries: {borderCountries.length > 0 ? borderCountries.join(', ') : 'There are no borders'}</p>
+        </div>
+        </div>
+    </div>
+    );
 }
 
 export default CountryPage;
