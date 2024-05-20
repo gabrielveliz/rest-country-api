@@ -1,0 +1,23 @@
+.CountryPage{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 2rem;
+    padding: 2rem;
+}
+.CountryPage img{
+    width: 100%;
+}
+.CountryDescription{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 2rem;
+}
+.BordersGrid{
+    display: flex;
+}
+.BorderBox{
+    margin-left: 1rem;
+    padding: 0rem 1rem;
+    border: solid white 1px;
+    
+}
