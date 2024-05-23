@@ -1,3 +1,15 @@
 .contMenu{
     background-color: var(--backmenu);
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    padding: 1rem 4rem;
+}
+.switchTheme{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    
+}
+.link{
+    text-decoration: none;
 }

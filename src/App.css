@@ -4,3 +4,6 @@ body{
 span,p,h1{
     color: var(--texto);
 }
+.link{
+    text-decoration: none;
+}

@@ -9,3 +9,22 @@
     width: 100%;
     height: 50%;
 }
+.buttonboxcountry{
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+.buttonboxcountry span{
+    padding: 0.5rem;
+    border: 2px solid white;
+}
+.next{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.regionContainer{
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 1rem 0rem;
+}

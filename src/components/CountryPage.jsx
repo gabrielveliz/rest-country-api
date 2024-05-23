@@ -2,10 +2,11 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import apiRequests from "../utils/api";
+import Menu from "./Menu"
 import "../styles/CountryPage.css";
 
-const CountryPage = () => {
+const CountryPage = ({theme,ChangeTheme}) => {
     const { countryName } = useParams();
     const [pais, setPais] = useState(null);
     const [borderCountries, setBorderCountries] = useState([]);
@@ -13,13 +14,14 @@ const CountryPage = () => {
     useEffect(() => {
         const fetchCountry = async () => {
         try {
-        const response = await axios.get(`https://restcountries.com/v3.1/name/${countryName}`);
+        //apiRequests.getCountry(countryName).then(response=>{const countryData = response.data[0];setPais(response.data[0]);})
+        const response = await apiRequests.getCountry(countryName);
         const countryData = response.data[0];
         setPais(countryData);
 
         if (countryData.borders) {
             const borderPromises = countryData.borders.map(async (border) => {
-            const borderResponse = await axios.get(`https://restcountries.com/v3.1/alpha/${border}`);
+            const borderResponse = await apiRequests.getBorder(border);
             return borderResponse.data[0].name.common;
             });
 
@@ -43,6 +45,8 @@ const CountryPage = () => {
     const languages = pais.languages ? Object.values(pais.languages).join(', ') : 'No Languages';
 
     return (
+        <>
+    <Menu theme={theme} ChangeTheme={ChangeTheme}></Menu>
     <div className='CountryPage'>
         <div>
             <img src={pais.flags.png} alt={pais.flags.alt} />
@@ -70,10 +74,11 @@ const CountryPage = () => {
                     <Link key={index} to={`/country/${borderCountry}`}><div className='BorderBox' ><p>{borderCountry}</p></div></Link>
                 ))
                 ) 
-            : 'No borders'}
+            : <p>No borders</p>}
         </div>
         </div>
     </div>
+    </>
     );
 }
 
