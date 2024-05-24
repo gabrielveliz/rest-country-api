@@ -1,5 +1,5 @@
 .containerCountry{
-    padding: 2rem 4rem;
+    padding: 3rem 6rem;
 }
 .countryHead
 {
@@ -10,5 +10,5 @@
     margin-top: 2rem;
     display: grid;
     grid-template-columns: repeat(4,1fr);
-    gap: 4rem;
+    gap: 8rem;
 }

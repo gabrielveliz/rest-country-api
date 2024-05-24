@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { FaMoon,FaSun } from "react-icons/fa";
 import "../styles/Menu.css"
 
 const Menu = ({theme,ChangeTheme}) => {
@@ -11,7 +12,10 @@ const Menu = ({theme,ChangeTheme}) => {
                 </Link>
                 </div>
                 <div className="switchTheme" onClick={ChangeTheme}>
-                    <span>{theme}</span>
+                    
+                        {theme===1 ? <><span>Dark Mode</span><span><FaMoon /></span></> : <><span>Light Mode</span><span><FaSun /></span></>}
+                    
+                    
                 </div>
             </div>
         </>

@@ -8,15 +8,17 @@ import "./App.css"
 
 function App() {
 
-  const [theme,seTheme] = useState("Dark Mode")
-
+  const [theme,seTheme] = useState(1)
+  const [datatheme,setDatatheme] = useState("dark")
 
   const ChangeTheme = () =>{
-    seTheme("Light Mode")
+    if(theme===1){seTheme(0);setDatatheme("light")}
+    else{seTheme(1);setDatatheme("dark")}
+    
   }
 
   return (
-    <div className="App">
+    <div className="App" data-theme={datatheme}>
           <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home theme={theme} ChangeTheme={ChangeTheme} />} />

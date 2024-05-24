@@ -1,6 +1,7 @@
 import { useState} from "react";
 import { Link } from 'react-router-dom';
 import "../styles/countryMin.css"
+import { FaArrowLeft,FaArrowRight } from "react-icons/fa";
 
 const CountryMin = ({paises}) =>{
 
@@ -43,10 +44,13 @@ const CountryMin = ({paises}) =>{
                         <Link to={`/country/${pais.name.common}`} key={index} className='link'>
                         <div className="CountryCard" >
                             <img src={pais.flags.png} alt={pais.flags.alt} />
-                            <span>{pais.name.common}</span>
-                            <p>Population: {pais.population}</p>
-                            <p>Region: {pais.region}</p>
-                            <p>Capital: {pais.capital}</p>
+                            <div className="CountryCardDescr">
+                                <span className="CountryCardDescrTitle">{pais.name.common}</span>
+                                <p><span className="bold">Population:</span> {pais.population}</p>
+                                <p><span className="bold">Region:</span> {pais.region}</p>
+                                <p><span className="bold">Capital:</span> {pais.capital}</p>
+                            </div>
+                            
                         </div>
                         </Link>
                         
@@ -54,10 +58,10 @@ const CountryMin = ({paises}) =>{
                 </div>
                 <div className="buttonboxcountry">
                     <div className="back" >
-                        <div><span onClick={back}>Back</span></div>
+                        <div className="cursor" onClick={back}><span><FaArrowLeft /></span><span >Back</span></div>
                     </div>
                     <div className="next">
-                        <div><span onClick={next}>Next</span></div>
+                        <div className="cursor" onClick={next}><span >Next</span><span><FaArrowRight /></span></div>
                     </div>
                 </div>
             </div>
