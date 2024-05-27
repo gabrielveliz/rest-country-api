@@ -1,7 +1,7 @@
 import { useState} from "react";
 import { Link } from 'react-router-dom';
 import "../styles/countryMin.css"
-import { FaArrowLeft,FaArrowRight } from "react-icons/fa";
+import { FaArrowLeft,FaArrowRight,FaSearch } from "react-icons/fa";
 
 const CountryMin = ({paises}) =>{
 
@@ -24,7 +24,12 @@ const CountryMin = ({paises}) =>{
         <>  
             <div className="containerCountry">
                 <div className="countryHead">
-                    <div className="searchBar"><input type="text" /></div>
+                    <div className="searchBox">
+                        <div className="searchBar">
+                            <FaSearch/><input type="text" placeholder="Search for a country..."/>
+                        </div>
+                        
+                    </div>
                     <div className="regionContainer">
                         <select id="regionOption">
                                 <option value="">Filter by Region</option>

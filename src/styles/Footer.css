@@ -1,0 +1,11 @@
+.footerbox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6rem 0rem;
+    font-size: 1.6rem;
+}
+.footerbox a{
+    text-decoration: none;
+    color: var(--texto);
+}

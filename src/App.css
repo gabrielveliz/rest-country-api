@@ -1,24 +1,30 @@
-html{
+html, body{
     box-sizing: border-box;
-    font-size: 62.5%; /* 1 rem = 10px */
+
     width: 100%;
     height: 100%;
   }
-  body{
-    width: 100%;
-    height: 100%;
+html{
+  font-size: 62.5%; /* 1 rem = 10px */
   }
-  
+
+*::before,
+*::after {
+    box-sizing: inherit;
+}
   *,*:before,*:after{
     box-sizing: inherit;
   }
   
   /* ***************** */
-
+body{
+  background-color: var(--fondo);
+}
 .App{
     background-color: var(--fondo);
+    
 }
-span,p,h1{
+span,p,h1,h2,.searchBar input{
     color: var(--texto);
     font-family: "Nunito Sans";
 }

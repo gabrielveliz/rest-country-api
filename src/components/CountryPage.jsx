@@ -2,19 +2,23 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { FaArrowLeft } from "react-icons/fa";
 import apiRequests from "../utils/api";
-import Menu from "./Menu"
+import Menu from "./Menu";
+import Footer from "../components/Footer";
+import { FaTools,FaSpinner } from "react-icons/fa";
+import "../styles/Error.css"
 import "../styles/CountryPage.css";
 
 const CountryPage = ({theme,ChangeTheme}) => {
     const { countryName } = useParams();
     const [pais, setPais] = useState(null);
     const [borderCountries, setBorderCountries] = useState([]);
+    const [Error, setError] = useState(null);
 
     useEffect(() => {
         const fetchCountry = async () => {
         try {
-        //apiRequests.getCountry(countryName).then(response=>{const countryData = response.data[0];setPais(response.data[0]);})
         const response = await apiRequests.getCountry(countryName);
         const countryData = response.data[0];
         setPais(countryData);
@@ -30,14 +34,29 @@ const CountryPage = ({theme,ChangeTheme}) => {
             }
         } catch (error) {
         console.error('Error:', error);
+        setError(true)
         }
     };
 
     fetchCountry();
     }, [countryName]);
 
+    
     if (!pais) {
-    return <div><p>Loading Country...</p></div>;
+        if(Error){
+            return <div className='errorpagebox'><div className='errorpage'><FaTools /><p>
+            Error connecting to server, please try again later.</p></div>
+            <div>
+                <Link to={`/home`} className='link'><div className='backbutton'><span>Back</span></div></Link>    
+            </div></div>;
+        }else{
+            return <div className="preloaderbox">
+            <div class="errorpagebox">
+                <div className="icono"><FaSpinner /></div><div><p>Loading Country...</p></div>
+            </div>
+        </div>;
+        }
+
     }
 
     const currencies = pais.currencies ? Object.values(pais.currencies).map(c => c.name).join(', ') : 'No currencies';
@@ -47,37 +66,45 @@ const CountryPage = ({theme,ChangeTheme}) => {
     return (
         <>
     <Menu theme={theme} ChangeTheme={ChangeTheme}></Menu>
+    <div className='backbuttonbox'>
+        <Link to={`/home`} className='link'> 
+            <div className='backbutton'>
+                <FaArrowLeft /><span>Back</span>
+            </div>
+        </Link>
+    </div>
     <div className='CountryPage'>
         <div>
-            <img src={pais.flags.png} alt={pais.flags.alt} />
+            <img src={pais.flags.svg} alt={pais.flags.alt} />
         </div>
         <div>
-            <div className='CountryName'><p>{countryName}</p></div>
+            <div className='CountryName'><h2>{countryName}</h2></div>
         <div className='CountryDescription'>
             <div>
-                <p>Native Name: {nativeName}</p>
-                <p>Population: {pais.population}</p>
-                <p>Region: {pais.region}</p>
-                <p>Sub Region: {pais.subregion}</p>
-                <p>Capital: {pais.capital && pais.capital.join(', ')}</p>
+                <p><span className='bold'>Native Name: </span><span>{nativeName}</span> </p>
+                <p><span className='bold'>Population: </span><span>{pais.population}</span> </p>
+                <p><span className='bold'>Region: </span><span>{pais.region}</span> </p>
+                <p><span className='bold'>Sub Region: </span><span>{pais.subregion}</span> </p>
+                <p><span className='bold'>Capital: </span><span>{pais.capital && pais.capital.join(', ')}</span> </p>
             </div>
             <div>
-                <p>Top Level Domain: {pais.tld}</p>
-                <p>Currencies: {currencies}</p>
-                <p>Languages: {languages}</p>
+                <p><span className='bold'>Top Level Domain: </span><span>{pais.tld}</span> </p>
+                <p><span className='bold'>Currencies: </span><span>{currencies}</span> </p>
+                <p><span className='bold'>Languages: </span><span>{languages}</span> </p>
             </div>
         </div>
         <div className='BordersGrid'>
-            <p>Border Countries: </p>{borderCountries.length > 0 ? 
+            <p><span className='bold'>Border Countries: </span></p>{borderCountries.length > 0 ? 
             (
                 borderCountries.map((borderCountry, index) => (
-                    <Link key={index} to={`/country/${borderCountry}`}><div className='BorderBox' ><p>{borderCountry}</p></div></Link>
+                    <Link key={index} to={`/country/${borderCountry}`}  className='link'><div className='BorderBox' ><p>{borderCountry}</p></div></Link>
                 ))
                 ) 
             : <p>No borders</p>}
         </div>
         </div>
     </div>
+    <Footer></Footer>
     </>
     );
 }

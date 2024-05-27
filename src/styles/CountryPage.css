@@ -1,22 +1,62 @@
+
 .CountryPage{
     display: grid;
     grid-template-columns: repeat(2,1fr);
-    gap: 2rem;
-    padding: 2rem;
+    gap: 10rem;
+    padding: 0rem 6rem;
 }
 .CountryPage img{
     width: 100%;
+
 }
+.CountryName h2{
+    font-size: 4rem;
+}
+
+.backbuttonbox{
+    padding: 6rem 6rem;
+    display: flex;
+    
+}
+.backbutton{
+    padding: 1rem 4rem;
+    background-color: var(--backmenu);
+    box-shadow: var(--shadow)  0px 0.3rem 0.5rem;
+    border-radius: 0.4rem;
+    font-size: 1.6rem;
+    color: var(--texto);
+    display: flex;
+    gap:1rem;
+    align-items: center;
+}
+.backbutton:hover{
+    background-color: var(--hovervar);
+}
+
 .CountryDescription{
     display: grid;
     grid-template-columns: repeat(2,1fr);
     gap: 2rem;
 }
+
+.CountryDescription p,.BordersGrid p{
+    font-size: 1.4rem;
+}
+
 .BordersGrid{
     display: flex;
+    margin-top: 6rem;
+    align-items: center;
+}
+.BorderBox p{
+    padding: 0.5rem 3rem;
 }
 .BorderBox{
+    background-color: var(--backmenu);
     margin-left: 1rem;
-    padding: 0rem 1rem;
-    border: solid white 1px;
+    padding: 0;
+    box-shadow: var(--shadow)  0px 0.3rem 0.5rem;
+}
+.BorderBox:hover{
+    background-color: var(--hovervar);
 }

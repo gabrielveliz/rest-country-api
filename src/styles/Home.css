@@ -1,5 +1,8 @@
+
 .containerCountry{
     padding: 3rem 6rem;
+    width: 100%;
+    height: 100%;
 }
 .countryHead
 {
@@ -10,5 +13,33 @@
     margin-top: 2rem;
     display: grid;
     grid-template-columns: repeat(4,1fr);
-    gap: 8rem;
+    gap: 5rem;
+}
+.searchBar{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    background-color: var(--backmenu);
+    width: 50rem;
+    padding: 2rem;
+    font-size: 2rem;
+    color: var(--texto);
+    box-shadow: var(--shadow)  0px 0.3rem 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.searchBar input{
+    width: 100%;
+    border: none;
+    inset-inline: none;
+    background-color: var(--backmenu);
+    color: var(--texto);
+    outline: none;
+}
+.searchBar input::placeholder{
+    color: var(--texto);
+}
+
+.iconsearch{
+    width: 1rem;
 }

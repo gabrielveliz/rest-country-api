@@ -3,11 +3,14 @@
     --fondo:hsl(0, 0%, 98%);
     --texto:hsl(200, 15%, 8%);
     --backmenu:hsl(0, 0%, 100%);
-    /*box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;*/
+    --shadow:rgba(126, 126, 126, 0.35);
+    --hovervar:hsl(0, 0%, 77%);
 }
 
 [data-theme='dark']{
     --fondo:hsl(207, 26%, 17%);
     --texto:hsl(0, 0%, 100%);
     --backmenu:hsl(209, 23%, 22%);
+    --shadow:rgba(0, 0, 0, 0.35);
+    --hovervar:hsl(210, 20%, 17%);
 }
