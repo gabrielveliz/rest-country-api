@@ -1,12 +1,23 @@
 .title{
     font-size: 1.8rem;
 }
+@media (max-width:500px){
+    .title{
+        font-size: 1rem;
+    }
+}
 .contMenu{
     background-color: var(--backmenu);
     display: grid;
     grid-template-columns: repeat(2,1fr);
     padding: 1rem 4rem;
     box-shadow: var(--shadow)  0px 0.3rem 0.5rem;
+}
+@media (max-width:500px){
+    .contMenu{
+        padding: 1rem 1rem;
+        grid-template-columns: 60% 40%;
+    }
 }
 .switchTheme{
     display: flex;
@@ -15,6 +26,7 @@
     gap: 0.5rem;
     font-size: 1.4rem;
     padding: 2rem;
+    user-select: none;
 }
 .link{
     text-decoration: none;

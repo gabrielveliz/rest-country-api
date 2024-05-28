@@ -9,3 +9,11 @@
     text-decoration: none;
     color: var(--texto);
 }
+
+@media (max-width:500px){
+    .footerbox{
+        padding: 3rem 0rem;
+        font-size: 1.3rem;
+    }   
+    
+}

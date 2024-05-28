@@ -19,13 +19,13 @@ function App() {
 
   return (
     <div className="App" data-theme={datatheme}>
-          <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home theme={theme} ChangeTheme={ChangeTheme} />} />
-        <Route path="/home" element={<Home theme={theme} ChangeTheme={ChangeTheme}/>} />
-        <Route path="/country/:countryName" element={<CountryPage theme={theme} ChangeTheme={ChangeTheme}/>} />
-        <Route render={() => <h1>Not found!</h1>} />
-      </Routes>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home theme={theme} ChangeTheme={ChangeTheme} />} />
+          <Route path="/home" element={<Home theme={theme} ChangeTheme={ChangeTheme}/>} />
+          <Route path="/country/:countryName" element={<CountryPage theme={theme} ChangeTheme={ChangeTheme}/>} />
+          <Route render={() => <h1>Not found!</h1>} />
+        </Routes>
     </BrowserRouter>
     </div>
   );

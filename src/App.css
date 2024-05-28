@@ -33,4 +33,5 @@ span,p,h1,h2,.searchBar input{
 }
 .cursor{
     cursor: pointer;
+    user-select: none;
 }

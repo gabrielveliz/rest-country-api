@@ -2,12 +2,14 @@
     background-color: var(--backmenu);
     border-radius: 2%;
     box-shadow: var(--shadow)  0px 0.3rem 0.5rem;
+    margin-top: 2rem;
 }
 
 .CountryCard img{
     border-top-left-radius: 2%;
     border-top-right-radius: 2%;
     width: 100%;
+    
 }
 
 .CountryCardDescr{
@@ -41,5 +43,49 @@
 .regionContainer{
     display: flex;
     flex-direction: row-reverse;
-    padding: 1rem 0rem;
+    font-size: 1.6rem;
+}
+
+@media (max-width:500px){
+    .regionContainer{
+        flex-direction: row;
+        margin-top: 2rem;
+    }
+}
+
+.optiontitle{
+    color: var(--texto);
+    box-shadow: var(--shadow)  0px 0.3rem 0.5rem;
+    background-color: var(--backmenu);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    user-select: none;
+}
+.optionbox{
+    display: none;
+    position:absolute;
+    color: var(--texto);
+    background-color: var(--backmenu);
+    margin-top: 30rem;
+    margin-left: -2rem;
+    border-radius: 0.5rem;
+    width: 21rem;
+
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.option span{
+    padding: 0.5rem 0rem;
+}
+.option{
+    padding-left: 2rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    cursor: pointer;
+}
+.option:hover{
+    background-color: var(--hovervar);
 }

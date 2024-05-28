@@ -82,7 +82,7 @@ const CountryPage = ({theme,ChangeTheme}) => {
         <div className='CountryDescription'>
             <div>
                 <p><span className='bold'>Native Name: </span><span>{nativeName}</span> </p>
-                <p><span className='bold'>Population: </span><span>{pais.population}</span> </p>
+                <p><span className='bold'>Population: </span><span>{pais.population.toLocaleString()}</span> </p>
                 <p><span className='bold'>Region: </span><span>{pais.region}</span> </p>
                 <p><span className='bold'>Sub Region: </span><span>{pais.subregion}</span> </p>
                 <p><span className='bold'>Capital: </span><span>{pais.capital && pais.capital.join(', ')}</span> </p>
@@ -94,13 +94,13 @@ const CountryPage = ({theme,ChangeTheme}) => {
             </div>
         </div>
         <div className='BordersGrid'>
-            <p><span className='bold'>Border Countries: </span></p>{borderCountries.length > 0 ? 
+            <div><p><span className='bold'>Border Countries: </span></p></div><div className='BordersGridlist'>{borderCountries.length > 0 ? 
             (
                 borderCountries.map((borderCountry, index) => (
                     <Link key={index} to={`/country/${borderCountry}`}  className='link'><div className='BorderBox' ><p>{borderCountry}</p></div></Link>
                 ))
                 ) 
-            : <p>No borders</p>}
+            : <p className='nobor'>No borders</p>}</div>
         </div>
         </div>
     </div>

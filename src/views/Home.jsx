@@ -1,5 +1,5 @@
 import { useState, useEffect} from "react";
-import { FaSpinner } from "react-icons/fa";
+import { FaSpinner,FaTools } from "react-icons/fa";
 import apiRequests from "../utils/api";
 import CountryMin from "../components/CountryMin";
 import Menu from "../components/Menu";
@@ -8,6 +8,8 @@ import "../styles/Home.css";
 
 const Home = ({theme,ChangeTheme}) =>{
     const [paises,setPaises] = useState(null)
+    const [Error, setError] = useState(null);
+
 
     useEffect(()=>{
         
@@ -16,15 +18,23 @@ const Home = ({theme,ChangeTheme}) =>{
         }
         catch(error){
             console.log("Error en consulta Home:",error)
+            setError(true)
         }
         },[])
     
         if (!paises) {
-            return <div className="preloaderbox">
-                        <div class="errorpagebox">
-                            <div className="icono"><FaSpinner /></div><div><p>Loading Countries...</p></div>
-                        </div>
-                    </div>;
+            if(Error){
+                return <div className='errorpagebox'><div className='errorpage'><FaTools /><p>
+                Error connecting to server, please try again later.</p></div>
+                </div>;
+            }else{
+                return <div className="preloaderbox">
+                <div class="errorpagebox">
+                    <div className="icono"><FaSpinner /></div><div><p>Loading Countries...</p></div>
+                </div>
+            </div>;
+            }
+
             }
 
     return(

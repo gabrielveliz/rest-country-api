@@ -5,6 +5,14 @@
     gap: 10rem;
     padding: 0rem 6rem;
 }
+@media (max-width:500px){
+    .CountryPage{
+        grid-template-columns: repeat(1,1fr);
+        gap: 2rem;
+        padding: 0rem 2rem;
+        width: 100%;
+    }
+}
 .CountryPage img{
     width: 100%;
 
@@ -12,12 +20,23 @@
 .CountryName h2{
     font-size: 4rem;
 }
-
+@media (max-width:500px){
+    .CountryName h2{
+        font-size: 3rem;
+    }
+}
 .backbuttonbox{
     padding: 6rem 6rem;
     display: flex;
     
 }
+
+@media (max-width:500px){
+    .backbuttonbox{
+        padding: 6rem 3rem;    
+    }
+}
+
 .backbutton{
     padding: 1rem 4rem;
     background-color: var(--backmenu);
@@ -29,6 +48,8 @@
     gap:1rem;
     align-items: center;
 }
+
+
 .backbutton:hover{
     background-color: var(--hovervar);
 }
@@ -37,6 +58,12 @@
     display: grid;
     grid-template-columns: repeat(2,1fr);
     gap: 2rem;
+}
+@media (max-width:500px){
+    .CountryDescription{
+        grid-template-columns: repeat(1,1fr);
+        gap: 2rem;
+    }
 }
 
 .CountryDescription p,.BordersGrid p{
@@ -48,14 +75,49 @@
     margin-top: 6rem;
     align-items: center;
 }
+@media (max-width:500px){
+    .BordersGrid{
+        display: flex;
+        margin-top: 4rem;
+        flex-direction: column;
+        align-items:flex-start;
+    }
+}
+
+.BordersGridlist{
+    display: flex;
+    flex-wrap: wrap;
+}
+@media (max-width:500px){
+    .BordersGridlist{
+        gap: 1rem;
+    }
+}
 .BorderBox p{
     padding: 0.5rem 3rem;
 }
+
+.nobor{
+    margin-left: 1rem;
+}
+
+@media (max-width:500px){
+    .nobor{
+        margin-left: 0rem;
+    }
+}
+
 .BorderBox{
     background-color: var(--backmenu);
     margin-left: 1rem;
     padding: 0;
     box-shadow: var(--shadow)  0px 0.3rem 0.5rem;
+}
+@media (max-width:500px){
+    .BorderBox{
+        margin-left: 0rem;
+        width: 100%;
+    }
 }
 .BorderBox:hover{
     background-color: var(--hovervar);
